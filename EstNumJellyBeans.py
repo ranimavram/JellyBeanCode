@@ -1,4 +1,4 @@
-#!/home/Install/anaconda/bin/python
+#!/Users/ranismavram/anaconda/bin/python
 
 import sys
 
@@ -45,8 +45,14 @@ class NumJellyEstimator:
     def set_world_pop(self, people):
 
         # NE24: Add a test for type here
+        assert type(people) is int, \
+            "Error: people set must be an integer."
  
         # NE24: Add a test for value here
+        if (people <= 0.0):
+            print "\nError: People must be greater than"\
+                  +" 0.0.\n"
+            sys.exit()
 
         # Store the fraction.
         self.worldPop = people
@@ -56,8 +62,14 @@ class NumJellyEstimator:
     def set_frac_ppl_loving_pink(self, frac):
 
         # NE24: Add a test for type here
+        assert type(frac) is float, \
+            "Error: fraction of people who love the color pink set must be a float."
 
         # NE24: Add a test for value here
+        if ((frac <= 0.0) or (frac >= 1.0)):
+            print "\nError: Fraction of people who like pink must be between"\
+                  +" 0.0 and 1.0.\n"
+            sys.exit()
 
         # Store the fraction.
         self.fracPplLovingPink = frac
@@ -94,6 +106,9 @@ class NumJellyEstimator:
                   +"computing estimate.\n"
 
         # NE24: What other checks might be useful? What is a better way to do this?
+        
+        # Additional  checks that may be helpful is to check each value before to see if it has been already set.
+        #You could also check the variables once they have been to make sure they meet a certain range (i.e a fraction, float, etc. ) before proceeding. 
 
         return int(n)
 
